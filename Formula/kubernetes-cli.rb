@@ -26,8 +26,9 @@ class KubernetesCli < Formula
       ENV.deparallelize { system "make", "generated_files" }
 
       # Make binary
-      system "make", "kubectl"
+      system "make", "kubectl", "kubeadm"
       bin.install "_output/local/bin/darwin/amd64/kubectl"
+      bin.install "_output/local/bin/darwin/amd64/kubeadm"
 
       # Install bash completion
       output = Utils.popen_read("#{bin}/kubectl completion bash")
